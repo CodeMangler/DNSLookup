@@ -1,0 +1,9 @@
+*.suo
+*.user
+*.resharper
+_ReSharper.*
+bin
+obj
+Debug
+Release
+TestResults/*
