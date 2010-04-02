@@ -22,7 +22,7 @@ namespace CodeMangler.DNSLookup
         internal string Lookup(string query, string queryType)
         {
             Message dnsRequest = new Message();
-            dnsRequest.AddQuery(query);
+            dnsRequest.AddQuery(query, RecordType.A);
             byte[] requestDatagram = dnsRequest.AsByteArray();
             int sendResult = _udpChannel.Send(requestDatagram, requestDatagram.Length, _serverEndpoint); // Verify sendResult and throw exception if required..
 

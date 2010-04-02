@@ -29,9 +29,9 @@ namespace CodeMangler.DNSLookup.DNS
             return result.ToArray();
         }
 
-        internal void Add(string domainName)
+        internal void Add(string domainName, RecordType recordType = RecordType.ANY, RecordClass recordClass = RecordClass.IN)
         {
-            _queries.Add(new Query(domainName));
+            _queries.Add(new Query(domainName, recordType, recordClass));
         }
     }
 }

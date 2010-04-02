@@ -21,6 +21,17 @@ namespace CodeMangler.DNSLookup.DNS
                 {
                     done = true;
                 }
+                else if(c >= 192) // => c > = 11000000 => the first two bits turned on, marking the start of compression..
+                {
+                    UInt16 pointer = datagram.ToUInt16(i - 1); // Get two bytes..
+                    pointer <<= 2; // To lose the two high bits..
+                    pointer >>= 2; // Revert back, thus setting the 2 high bits to 0, and getting the actual pointer back..
+                    i++; // We just read an extra byte _in addition_ to the one we'd just read..
+                    usedBytes++; // We used up just 2 bytes.. Not the length of the parsed string..
+
+                    int domainNameByteCount;
+                    return DecodeDomainName(datagram, pointer, out domainNameByteCount); // Return the decoded name from the pointer offset..
+                }
                 else
                 {
                     result.Append(Encoding.ASCII.GetString(datagram, i, c)).Append(".");

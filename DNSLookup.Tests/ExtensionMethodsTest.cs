@@ -51,6 +51,29 @@ namespace DNSLookup.Tests
             Assert.AreEqual(16, usedBytes);
         }
 
+        [TestMethod]
+        public void CanDecodeCompressedDomainName()
+        {
+            byte[] datagram = new byte[] {  0xCA, 0xFE, 0xBA, 0xBE, // Some totally random bytes
+                                            0x03, 119, 119, 119, 0x06, 103, 111, 111, 103, 108, 101, 0x03, 99, 111, 109, 0x00, // 3www6google3com0
+                                            0x0A, 0x0B, 0x0C, 0x0D, // Some more totally random bytes
+                                            0xC0, 0x04, // Pointer to 4 bytes into the packet -> 3www6google3com0
+                                            0xC0, 0x08, // Pointer to 8 bytes into the packet -> 6google3com0
+                                            0xC0, 0x0F // Pointer to 15 bytes into the packet -> 3com0
+                                         };
+            int usedBytes;
+            // Without compression first
+            Assert.AreEqual("www.google.com", datagram.DecodeDomainName(4, out usedBytes));
+            Assert.AreEqual(16, usedBytes);
+            
+            // Compression tests..
+            Assert.AreEqual("www.google.com", datagram.DecodeDomainName(24, out usedBytes));
+            Assert.AreEqual(2, usedBytes);
+            Assert.AreEqual("google.com", datagram.DecodeDomainName(26, out usedBytes));
+            Assert.AreEqual(2, usedBytes);
+            Assert.AreEqual("com", datagram.DecodeDomainName(28, out usedBytes));
+            Assert.AreEqual(2, usedBytes);
+        }
 
         [TestMethod]
         public void CanEncodeDomainName()

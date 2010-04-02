@@ -25,16 +25,16 @@ namespace CodeMangler.DNSLookup.DNS
         public Message(byte[] datagram) : this()
         {
             int offset = _header.Parse(datagram);
-            offset = _queries.Parse(datagram, offset, _header.QueryCount);
-            offset = _answers.Parse(datagram, offset, _header.AnswerCount);
-            offset = _authorityResourceRecords.Parse(datagram, offset, _header.AuthorityResourceRecordCount);
-            offset = _additionalInformationRecords.Parse(datagram, offset, _header.AdditionalResourceRecordCount);
+            offset += _queries.Parse(datagram, offset, _header.QueryCount);
+            offset += _answers.Parse(datagram, offset, _header.AnswerCount);
+            offset += _authorityResourceRecords.Parse(datagram, offset, _header.AuthorityResourceRecordCount);
+            offset += _additionalInformationRecords.Parse(datagram, offset, _header.AdditionalResourceRecordCount);
         }
 
-        internal void AddQuery(string query)
+        internal void AddQuery(string domainName, RecordType recordType = RecordType.ANY, RecordClass recordClass = RecordClass.IN)
         {
             _header.QueryCount++;
-            _queries.Add(query);
+            _queries.Add(domainName, recordType, recordClass);
         }
 
         internal bool IsForRequest(Message dnsRequest)
