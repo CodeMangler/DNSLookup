@@ -59,6 +59,7 @@
     <Compile Include="DNS\Answers.cs" />
     <Compile Include="DNS\AuthorityResourceRecords.cs" />
     <Compile Include="DNS\ExtensionMethods.cs" />
+    <Compile Include="DNS\HeaderFlags.cs" />
     <Compile Include="DNS\Queries.cs" />
     <Compile Include="DNS\Query.cs" />
     <Compile Include="DNS\RecordClass.cs" />

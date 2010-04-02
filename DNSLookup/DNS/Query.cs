@@ -7,9 +7,9 @@ namespace CodeMangler.DNSLookup.DNS
     {
         string _domainName;
         RecordType _type;
-        UInt16 _class;
+        RecordClass _class;
 
-        public Query(string domainName, RecordType type = RecordType.ANY, UInt16 queryClass = 1)
+        public Query(string domainName, RecordType type = RecordType.ANY, RecordClass queryClass = RecordClass.IN)
         {
             _domainName = domainName;
             _type = type;
@@ -21,12 +21,12 @@ namespace CodeMangler.DNSLookup.DNS
             get { return _domainName; }
         }
 
-        internal RecordType Type
+        public RecordType Type
         {
             get { return _type; }
         }
 
-        public UInt16 Class
+        public RecordClass Class
         {
             get { return _class; }
         }
@@ -41,7 +41,7 @@ namespace CodeMangler.DNSLookup.DNS
             query._type = (RecordType)datagram.ToUInt16(offset);
             offset += 2; // sizeof(UInt16)
             usedBytes += 2;
-            query._class = datagram.ToUInt16(offset + 2);
+            query._class = (RecordClass) datagram.ToUInt16(offset);
             usedBytes += 2; // sizeof(UInt16)
             return query;
         }
@@ -54,7 +54,7 @@ namespace CodeMangler.DNSLookup.DNS
             byte[] result = new byte[domainNameBytes.Length + ADDITIONAL_BYTES];
             Array.Copy(domainNameBytes, result, domainNameBytes.Length); // Copy encoded domain name bytes..
             Array.Copy(((UInt16)_type).ToByteArray(), 0, result, domainNameBytes.Length, 2); // Copy RecordType bytes..
-            Array.Copy(_class.ToByteArray(), 0, result, domainNameBytes.Length + 2, 2); // Copy RecordClass bytes..
+            Array.Copy(((UInt16)_class).ToByteArray(), 0, result, domainNameBytes.Length + 2, 2); // Copy RecordClass bytes..
             return result;
         }
     }
