@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using CodeMangler.DNSLookup.DNS.Records;
 
 namespace CodeMangler.DNSLookup.DNS
 {
@@ -9,7 +10,7 @@ namespace CodeMangler.DNSLookup.DNS
         Query _query;
         Int32 _ttl;
         UInt16 _resourceDataLength;
-        byte[] _resourceData;
+        RecordData _recordData;
 
         public static ResourceRecord Parse(byte[] datagram, int offset, out int usedBytes)
         {
@@ -22,10 +23,15 @@ namespace CodeMangler.DNSLookup.DNS
             resourceRecord._resourceDataLength = datagram.ToUInt16(offset);
             offset += 2; // sizeof(UInt16)
             usedBytes += 2;
-            resourceRecord._resourceData = new byte[resourceRecord._resourceDataLength];
-            Array.Copy(datagram, offset, resourceRecord._resourceData, 0, resourceRecord._resourceDataLength);
+
+            // Extract resource data bytes and parse them into a meaningful structure..
+            byte[] resourceDataBytes = new byte[resourceRecord._resourceDataLength];
+            Array.Copy(datagram, offset, resourceDataBytes, 0, resourceRecord._resourceDataLength);
+            resourceRecord._recordData = RecordDataFactory.RecordDataFor(resourceRecord._query.Type);
+            resourceRecord._recordData.PopulateFrom(resourceDataBytes);
             offset += resourceRecord._resourceDataLength;
             usedBytes += resourceRecord._resourceDataLength;
+
             return resourceRecord;
         }
 
@@ -35,13 +41,13 @@ namespace CodeMangler.DNSLookup.DNS
             result.AddRange(_query.AsByteArray());
             result.AddRange(_ttl.ToByteArray());
             result.AddRange(_resourceDataLength.ToByteArray());
-            result.AddRange(_resourceData);
+            result.AddRange(_recordData.AsByteArray);
             return result.ToArray();
         }
 
         internal string AsString()
         {
-            return Encoding.ASCII.GetString(_resourceData); // TODO: Replace with correct implementation later..
+            return _recordData.AsString;
         }
     }
 }

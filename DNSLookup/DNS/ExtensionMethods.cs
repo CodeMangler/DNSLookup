@@ -125,5 +125,9 @@ namespace CodeMangler.DNSLookup.DNS
             return result;
         }
 
+        public static byte[] ToByteArray(this UInt32 unsignedInteger)
+        {
+            return ((Int32)unsignedInteger).ToByteArray();
+        }
     }
 }

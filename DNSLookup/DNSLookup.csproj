@@ -56,13 +56,25 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DNS\AdditionalInformationRecords.cs" />
+    <Compile Include="DNS\Records\AddressData.cs" />
     <Compile Include="DNS\Answers.cs" />
     <Compile Include="DNS\AuthorityResourceRecords.cs" />
     <Compile Include="DNS\ExtensionMethods.cs" />
     <Compile Include="DNS\HeaderFlags.cs" />
+    <Compile Include="DNS\Records\CharacterStringData.cs" />
+    <Compile Include="DNS\Records\DomainNameData.cs" />
+    <Compile Include="DNS\Records\HostInformationData.cs" />
+    <Compile Include="DNS\Records\MailExchangeData.cs" />
+    <Compile Include="DNS\Records\MailInformationData.cs" />
     <Compile Include="DNS\Queries.cs" />
     <Compile Include="DNS\Query.cs" />
     <Compile Include="DNS\RecordClass.cs" />
+    <Compile Include="DNS\Records\NullData.cs" />
+    <Compile Include="DNS\Records\RecordData.cs" />
+    <Compile Include="DNS\Records\StartOfAuthorityData.cs" />
+    <Compile Include="DNS\Records\TextData.cs" />
+    <Compile Include="DNS\Records\WellKnownServiceData.cs" />
+    <Compile Include="DNS\Records\RecordDataFactory.cs" />
     <Compile Include="DNS\ResourceRecord.cs" />
     <Compile Include="LookupEngine.cs" />
     <Page Include="MainWindow.xaml">
