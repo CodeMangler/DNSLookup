@@ -5,11 +5,13 @@ namespace CodeMangler.DNSLookup.DNS.Records
     {
         private DomainNameData _responsibleMailbox;
         private DomainNameData _errorMailBox;
+        private RecordType _recordType;
 
-        public MailInformationData()
+        public MailInformationData(RecordType recordType)
         {
-            _responsibleMailbox = new DomainNameData();
-            _errorMailBox = new DomainNameData();
+            _responsibleMailbox = new DomainNameData(recordType);
+            _errorMailBox = new DomainNameData(recordType);
+            _recordType = recordType;
         }
 
         #region RecordData Members
@@ -37,6 +39,8 @@ namespace CodeMangler.DNSLookup.DNS.Records
                 return result.ToArray();
             }
         }
+
+        public RecordType RecordType { get { return _recordType; } }
 
         #endregion
     }

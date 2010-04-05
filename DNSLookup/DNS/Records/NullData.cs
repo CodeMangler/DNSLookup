@@ -5,6 +5,12 @@ namespace CodeMangler.DNSLookup.DNS.Records
     class NullData : RecordData
     {
         private byte[] _data = new byte[0];
+        private RecordType _recordType;
+
+        public NullData(RecordType recordType)
+        {
+            _recordType = recordType;
+        }
 
         #region RecordData Members
 
@@ -25,6 +31,8 @@ namespace CodeMangler.DNSLookup.DNS.Records
         {
             get { return _data; }
         }
+
+        public RecordType RecordType { get { return _recordType; } }
 
         #endregion
     }

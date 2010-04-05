@@ -12,16 +12,18 @@ namespace CodeMangler.DNSLookup.DNS.Records
         private UInt32 _retry;
         private UInt32 _expire;
         private UInt32 _minTtl;
+        private RecordType _recordType;
 
-        public StartOfAuthorityData()
+        public StartOfAuthorityData(RecordType recordType)
         {
-            _sourceNameServer = new DomainNameData();
-            _ownerMailbox = new DomainNameData();
+            _sourceNameServer = new DomainNameData(recordType);
+            _ownerMailbox = new DomainNameData(recordType);
             _serial = 0;
             _refresh = 0;
             _retry = 0;
             _expire = 0;
             _minTtl = 0;
+            _recordType = recordType;
         }
 
         #region RecordData Members
@@ -63,6 +65,8 @@ namespace CodeMangler.DNSLookup.DNS.Records
                 return result.ToArray();
             }
         }
+
+        public RecordType RecordType { get { return _recordType; } }
 
         #endregion
     }

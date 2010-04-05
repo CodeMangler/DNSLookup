@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using CodeMangler.DNSLookup.DNS.Records;
+using System.Diagnostics;
 
 namespace CodeMangler.DNSLookup.DNS
 {
@@ -25,10 +26,9 @@ namespace CodeMangler.DNSLookup.DNS
             usedBytes += 2;
 
             // Extract resource data bytes and parse them into a meaningful structure..
-            byte[] resourceDataBytes = new byte[resourceRecord._resourceDataLength];
-            Array.Copy(datagram, offset, resourceDataBytes, 0, resourceRecord._resourceDataLength);
             resourceRecord._recordData = RecordDataFactory.RecordDataFor(resourceRecord._query.Type);
-            resourceRecord._recordData.PopulateFrom(resourceDataBytes);
+            int recordDataLength = resourceRecord._recordData.PopulateFrom(datagram, offset);
+            Debug.Assert(recordDataLength == resourceRecord._resourceDataLength);
             offset += resourceRecord._resourceDataLength;
             usedBytes += resourceRecord._resourceDataLength;
 
@@ -47,7 +47,7 @@ namespace CodeMangler.DNSLookup.DNS
 
         internal string AsString()
         {
-            return _recordData.AsString;
+            return string.Format("{0}:\t{1}", _recordData.RecordType, _recordData.AsString);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace CodeMangler.DNSLookup.DNS
             switch (recordType)
             {
                 case RecordType.A:
-                    return new AddressData();
+                    return new AddressData(recordType);
                 case RecordType.CNAME:
                 case RecordType.MB: // Experimental
                 case RecordType.MD: // Obsolete.. Should throw exception instead? Or use MX?
@@ -18,24 +18,24 @@ namespace CodeMangler.DNSLookup.DNS
                 case RecordType.MR: // Experimental
                 case RecordType.NS:
                 case RecordType.PTR:
-                    return new DomainNameData();
+                    return new DomainNameData(recordType);
                 case RecordType.HINFO:
-                    return new HostInformationData();
+                    return new HostInformationData(recordType);
                 case RecordType.MINFO:
-                    return new MailInformationData();
+                    return new MailInformationData(recordType);
                 case RecordType.MX:
-                    return new MailExchangeData();
+                    return new MailExchangeData(recordType);
                 case RecordType.SOA:
-                    return new StartOfAuthorityData();
+                    return new StartOfAuthorityData(recordType);
                 case RecordType.TXT:
-                    return new TextData();
+                    return new TextData(recordType);
                 case RecordType.WKS:
-                    return new WellKnownServiceData();
+                    return new WellKnownServiceData(recordType);
                 case RecordType.NULL: // Experimental
-                    return new NullData();
+                    return new NullData(recordType);
 
             }
-            return new NullData();
+            return new NullData(recordType);
         }
     }
 }

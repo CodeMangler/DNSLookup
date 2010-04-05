@@ -2,10 +2,12 @@
 {
     public interface RecordData
     {
-        int PopulateFrom(byte[] data, int offset = 0);
+        int PopulateFrom(byte[] data, int offset);
 
         string AsString { get; }
 
         byte[] AsByteArray { get; }
+
+        RecordType RecordType { get; }
     }
 }

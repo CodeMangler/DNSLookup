@@ -4,6 +4,12 @@ namespace CodeMangler.DNSLookup.DNS.Records
     class TextData : RecordData
     {
         List<CharacterStringData> _characterStrings = new List<CharacterStringData>();
+        private RecordType _recordType;
+
+        public TextData(RecordType recordType)
+        {
+            _recordType = recordType;
+        }
 
         #region RecordData Members
 
@@ -13,13 +19,14 @@ namespace CodeMangler.DNSLookup.DNS.Records
             bool done = false;
             do
             {
-                CharacterStringData characterString = new CharacterStringData();
+                CharacterStringData characterString = new CharacterStringData(_recordType);
                 usedBytes += characterString.PopulateFrom(data, offset + usedBytes);
 
                 if(usedBytes >= (data.Length - offset)) // used up all bytes
                     done = true;
             } while (!done);
-            throw new System.NotImplementedException();
+
+            return usedBytes;
         }
 
         public string AsString
@@ -37,6 +44,8 @@ namespace CodeMangler.DNSLookup.DNS.Records
                 return result.ToArray();
             }
         }
+
+        public RecordType RecordType { get { return _recordType; } }
 
         #endregion
     }

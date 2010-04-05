@@ -4,12 +4,18 @@
     {
         private string _ipAddress = string.Empty;
         private const int IPADDRESS_SIZE = 4; // 4 Bytes for the IP Address.. Obviously, not considering IPv6
+        private RecordType _recordType;
+
+        public AddressData(RecordType recordType)
+        {
+            _recordType = recordType;
+        }
 
         #region RecordData Members
 
         public int PopulateFrom(byte[] data, int offset)
         {
-            _ipAddress = string.Format("{0}.{1}.{2}.{3}", data[0], data[1], data[2], data[3]);
+            _ipAddress = string.Format("{0}.{1}.{2}.{3}", data[offset], data[offset + 1], data[offset + 2], data[offset + 3]);
             return IPADDRESS_SIZE;
         }
 
@@ -35,6 +41,8 @@
                 return result;
             }
         }
+
+        public RecordType RecordType { get { return _recordType; } }
 
         #endregion
     }

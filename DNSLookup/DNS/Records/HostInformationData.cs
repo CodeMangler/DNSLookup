@@ -5,11 +5,13 @@ namespace CodeMangler.DNSLookup.DNS.Records
     {
         private CharacterStringData _cpu;
         private CharacterStringData _os;
+        private RecordType _recordType;
 
-        public HostInformationData()
+        public HostInformationData(RecordType recordType)
         {
-            _cpu = new CharacterStringData();
-            _os = new CharacterStringData();
+            _cpu = new CharacterStringData(recordType);
+            _os = new CharacterStringData(recordType);
+            _recordType = recordType;
         }
 
         #region RecordData Members
@@ -37,6 +39,8 @@ namespace CodeMangler.DNSLookup.DNS.Records
                 return result.ToArray();
             }
         }
+
+        public RecordType RecordType { get { return _recordType; } }
 
         #endregion
     }

@@ -7,12 +7,14 @@ namespace CodeMangler.DNSLookup.DNS.Records
         AddressData _address;
         byte _protocol;
         byte[] _bitMap;
+        private RecordType _recordType;
 
-        public WellKnownServiceData()
+        public WellKnownServiceData(RecordType recordType)
         {
-            _address = new AddressData();
+            _address = new AddressData(recordType);
             _protocol = 0;
             _bitMap = new byte[0];
+            _recordType = recordType;
         }
 
         #region RecordData Members
@@ -46,6 +48,8 @@ namespace CodeMangler.DNSLookup.DNS.Records
                 return result.ToArray();
             }
         }
+
+        public RecordType RecordType { get { return _recordType; } }
 
         #endregion
     }

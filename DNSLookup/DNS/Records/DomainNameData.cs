@@ -3,6 +3,12 @@
     class DomainNameData : RecordData
     {
         private string _domainName = string.Empty;
+        private RecordType _recordType;
+
+        public DomainNameData(RecordType recordType)
+        {
+            _recordType = recordType;
+        }
 
         #region RecordData Members
 
@@ -22,6 +28,8 @@
         {
             get { return _domainName.EncodeDomainName(); }
         }
+
+        public RecordType RecordType { get { return _recordType; } }
 
         #endregion
     }

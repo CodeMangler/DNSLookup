@@ -7,11 +7,13 @@ namespace CodeMangler.DNSLookup.DNS.Records
     {
         private UInt16 _preference;
         private DomainNameData _mailExchange;
+        private RecordType _recordType;
 
-        public MailExchangeData()
+        public MailExchangeData(RecordType recordType)
         {
             _preference = 0;
-            _mailExchange = new DomainNameData();
+            _mailExchange = new DomainNameData(recordType);
+            _recordType = recordType;
         }
 
         #region RecordData Members
@@ -40,6 +42,8 @@ namespace CodeMangler.DNSLookup.DNS.Records
                 return result.ToArray();
             }
         }
+
+        public RecordType RecordType { get { return _recordType; } }
 
         #endregion
     }

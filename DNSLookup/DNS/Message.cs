@@ -56,8 +56,11 @@ namespace CodeMangler.DNSLookup.DNS
         internal string AsString()
         {
             StringBuilder result = new StringBuilder();
+            result.AppendLine("Answers: ");
             result.Append(_answers.AsString());
+            result.AppendLine("Authoritative: ");
             result.Append(_authorityResourceRecords.AsString());
+            result.AppendLine("Additional: ");
             result.Append(_additionalInformationRecords.AsString());
             return result.ToString();
         }

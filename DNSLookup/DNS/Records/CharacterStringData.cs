@@ -6,6 +6,12 @@ namespace CodeMangler.DNSLookup.DNS.Records
     class CharacterStringData : RecordData
     {
         private string _characterString = string.Empty;
+        private RecordType _recordType;
+
+        public CharacterStringData(RecordType recordType)
+        {
+            _recordType = recordType;
+        }
 
         #region RecordData Members
 
@@ -33,6 +39,8 @@ namespace CodeMangler.DNSLookup.DNS.Records
                 return result;
             }
         }
+
+        public RecordType RecordType { get { return _recordType; } }
 
         #endregion
     }
