@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using System;
 
 namespace CodeMangler.DNSLookup.DNS
 {
+    [Serializable]
     public class Queries
     {
         private List<Query> _queries = new List<Query>();

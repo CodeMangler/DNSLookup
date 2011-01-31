@@ -4,6 +4,7 @@ using System.Text;
 
 namespace CodeMangler.DNSLookup.DNS
 {
+    [Serializable]
     class AuthorityResourceRecords
     {
         private List<ResourceRecord> _resourceRecords = new List<ResourceRecord>();

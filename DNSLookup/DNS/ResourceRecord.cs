@@ -6,6 +6,7 @@ using System.Diagnostics;
 
 namespace CodeMangler.DNSLookup.DNS
 {
+    [Serializable]
     public struct ResourceRecord
     {
         Query _query;

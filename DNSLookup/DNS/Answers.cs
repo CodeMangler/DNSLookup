@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace CodeMangler.DNSLookup.DNS
 {
+    [Serializable]
     class Answers
     {
         private List<ResourceRecord> _resourceRecords = new List<ResourceRecord>();

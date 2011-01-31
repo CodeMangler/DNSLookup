@@ -27,7 +27,7 @@
             <ComboBoxItem Content="AAAA" />
             <ComboBoxItem Content="A+AAAA" />
         </ComboBox>
-        <TextBox Name="txtQuery" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2" Grid.ColumnSpan="2" />
+        <TextBox Name="txtQuery" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2" Grid.ColumnSpan="2" Text="google.com" />
         <TextBox Name="txtServer" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2" TextChanged="txtServer_TextChanged" />
         <TextBox Name="txtResults" Grid.Row="2" HorizontalAlignment="Stretch" Margin="2" VerticalAlignment="Stretch" Grid.ColumnSpan="4" />
         <Label Name="lblServer" Content="Server" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" />

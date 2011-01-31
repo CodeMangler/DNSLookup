@@ -3,6 +3,7 @@ using System.Text;
 
 namespace CodeMangler.DNSLookup.DNS
 {
+    [Serializable]
     public struct Query
     {
         string _domainName;

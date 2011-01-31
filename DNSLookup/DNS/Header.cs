@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace CodeMangler.DNSLookup.DNS
 {
+    [Serializable]
     [StructLayout(LayoutKind.Sequential)]
     public struct Header
     {

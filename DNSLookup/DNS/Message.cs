@@ -5,6 +5,7 @@ using System.Text;
 namespace CodeMangler.DNSLookup.DNS
 {
     // A DNS Message. i.e. the Packet that's exchanged between the server and the client as part of the protocol..
+    [Serializable]
     public class Message
     {
         private Header _header;
@@ -12,6 +13,9 @@ namespace CodeMangler.DNSLookup.DNS
         private Answers _answers;
         private AuthorityResourceRecords _authorityResourceRecords;
         private AdditionalInformationRecords _additionalInformationRecords;
+
+        // Only for debugging..
+        private byte[] _rawBytes = new byte[0];
 
         public Message()
         {
@@ -24,12 +28,16 @@ namespace CodeMangler.DNSLookup.DNS
 
         public Message(byte[] datagram) : this()
         {
+            _rawBytes = datagram;
+
             int offset = _header.Parse(datagram);
             offset += _queries.Parse(datagram, offset, _header.QueryCount);
             offset += _answers.Parse(datagram, offset, _header.AnswerCount);
             offset += _authorityResourceRecords.Parse(datagram, offset, _header.AuthorityResourceRecordCount);
             offset += _additionalInformationRecords.Parse(datagram, offset, _header.AdditionalResourceRecordCount);
         }
+
+        public byte[] RawBytes { get { return _rawBytes; } }
 
         internal void AddQuery(string domainName, RecordType recordType = RecordType.ANY, RecordClass recordClass = RecordClass.IN)
         {
