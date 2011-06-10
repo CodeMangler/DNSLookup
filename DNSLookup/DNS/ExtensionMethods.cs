@@ -30,7 +30,7 @@ namespace CodeMangler.DNSLookup.DNS
                     usedBytes++; // We used up just 2 bytes.. Not the length of the parsed string..
 
                     int domainNameByteCount;
-                    return DecodeDomainName(datagram, pointer, out domainNameByteCount); // Return the decoded name from the pointer offset..
+                    return result.Append(DecodeDomainName(datagram, pointer, out domainNameByteCount)).ToString(); // Return the decoded name from the pointer offset..
                 }
                 else
                 {

@@ -64,6 +64,7 @@
     <Compile Include="DNS\Records\CharacterStringData.cs" />
     <Compile Include="DNS\Records\DomainNameData.cs" />
     <Compile Include="DNS\Records\HostInformationData.cs" />
+    <Compile Include="DNS\Records\IPv6AddressData.cs" />
     <Compile Include="DNS\Records\MailExchangeData.cs" />
     <Compile Include="DNS\Records\MailInformationData.cs" />
     <Compile Include="DNS\Queries.cs" />

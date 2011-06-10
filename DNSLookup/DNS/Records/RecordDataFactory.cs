@@ -10,6 +10,8 @@ namespace CodeMangler.DNSLookup.DNS
             {
                 case RecordType.A:
                     return new AddressData(recordType);
+                case RecordType.AAAA:
+                    return new IPv6AddressData(recordType);
                 case RecordType.CNAME:
                 case RecordType.MB: // Experimental
                 case RecordType.MD: // Obsolete.. Should throw exception instead? Or use MX?

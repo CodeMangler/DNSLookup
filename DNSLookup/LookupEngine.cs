@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using CodeMangler.DNSLookup.DNS;
 using System.Diagnostics;
 using System.Net.Sockets;
@@ -10,19 +11,20 @@ namespace CodeMangler.DNSLookup
         private const int LOCAL_PORT = 42424;
         private const int DNS_PORT = 53;
         private string _server;
-        private UdpClient _udpChannel = new UdpClient(LOCAL_PORT);
+        private UdpClient _udpChannel;
         IPEndPoint _serverEndpoint;
 
         public LookupEngine(string server)
         {
             _server = server;
             _serverEndpoint = new IPEndPoint(IPAddress.Parse(server), DNS_PORT);
+            _udpChannel = new UdpClient(LOCAL_PORT);
         }
 
         internal string Lookup(string query, string queryType)
         {
             Message dnsRequest = new Message();
-            dnsRequest.AddQuery(query, RecordType.ANY);
+            dnsRequest.AddQuery(query, (RecordType) Enum.Parse(typeof(RecordType), queryType, true));
             byte[] requestDatagram = dnsRequest.AsByteArray();
             int sendResult = _udpChannel.Send(requestDatagram, requestDatagram.Length, _serverEndpoint); // Verify sendResult and throw exception if required..
 

@@ -13,12 +13,13 @@ namespace CodeMangler.DNSLookup
 //            _lookupEngine = new LookupEngine(txtServer.Text);
             _lookupEngine = new LookupEngine("124.124.5.140");
 //            _lookupEngine = new LookupEngine("124.124.5.141");
+//            _lookupEngine = new LookupEngine("8.8.8.8");
         }
 
         private void btnQuery_Click(object sender, RoutedEventArgs e)
         {
             string query = txtQuery.Text;
-            string queryType = cmbQueryType.SelectedValue as string;
+            string queryType = cmbQueryType.Text;
             string result = _lookupEngine.Lookup(query, queryType);
             txtResults.Text = result;
         }

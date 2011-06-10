@@ -25,7 +25,7 @@
         MAILB = 0xFD,
         MAILA = 0xFE,
         //SRV,
-        //AAAA,
+        AAAA = 0x1C // IPv6 address
         //A_PLUS_AAAA,
     }
 }
