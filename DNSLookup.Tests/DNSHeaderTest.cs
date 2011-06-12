@@ -1,8 +1,6 @@
-﻿using CodeMangler.DNSLookup.DNS;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace DNSLookup.Tests
+namespace CodeMangler.nDNS.Tests
 {
     [TestClass()]
     public class DNSHeaderTest

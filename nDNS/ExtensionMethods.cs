@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using System;
 using System.Collections.Generic;
-namespace CodeMangler.DNSLookup.DNS
+namespace CodeMangler.nDNS
 {
     public static class ExtensionMethods
     {
@@ -40,7 +40,7 @@ namespace CodeMangler.DNSLookup.DNS
                 }
             } while (!done);
 
-            if (result[result.Length - 1] == '.') // Remove the extra dot
+            if (result.Length > 0 && result[result.Length - 1] == '.') // Remove the extra dot
                 result.Remove(result.Length - 1, 1);
 
             return result.ToString();

@@ -24,6 +24,7 @@
             <ComboBoxItem Content="PTR" />
             <ComboBoxItem Content="SRV" />
             <ComboBoxItem Content="SOA" />
+            <ComboBoxItem Content="TXT" />
             <ComboBoxItem Content="AAAA" />
             <ComboBoxItem Content="A+AAAA" />
         </ComboBox>

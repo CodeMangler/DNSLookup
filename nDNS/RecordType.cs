@@ -1,4 +1,4 @@
-﻿namespace CodeMangler.DNSLookup.DNS
+﻿namespace CodeMangler.nDNS
 {
     // http://publib.boulder.ibm.com/infocenter/tivihelp/v3r1/index.jsp?topic=/com.ibm.itcamISM.doc/rg/concept/ISM_Ref_DNS_guideline_dnsquery.html
     // http://www.ietf.org/rfc/rfc1035.txt

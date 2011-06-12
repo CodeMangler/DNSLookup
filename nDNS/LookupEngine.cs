@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Net;
-using CodeMangler.DNSLookup.DNS;
+using CodeMangler.nDNS;
 using System.Diagnostics;
 using System.Net.Sockets;
 
@@ -19,7 +19,7 @@ namespace CodeMangler.DNSLookup
             _serverEndpoint = new IPEndPoint(IPAddress.Parse(_server), DNS_PORT);
         }
 
-        internal string Lookup(string query, string queryType)
+        public string Lookup(string query, string queryType)
         {
             UdpClient udpChannel = null;
             try

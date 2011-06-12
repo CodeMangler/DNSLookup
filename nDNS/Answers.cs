@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CodeMangler.DNSLookup.DNS
+namespace CodeMangler.nDNS
 {
     [Serializable]
     class Answers

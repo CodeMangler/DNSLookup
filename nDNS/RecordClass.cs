@@ -1,4 +1,4 @@
-﻿namespace CodeMangler.DNSLookup.DNS
+﻿namespace CodeMangler.nDNS
 {
     // http://www.ietf.org/rfc/rfc1035.txt
     public enum RecordClass

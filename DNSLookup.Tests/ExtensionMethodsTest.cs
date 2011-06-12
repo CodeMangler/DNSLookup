@@ -1,9 +1,7 @@
-﻿using CodeMangler.DNSLookup.DNS;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Text;
 
-namespace DNSLookup.Tests
+namespace CodeMangler.nDNS.Tests
 {
     [TestClass]
     public class ExtensionMethodsTest

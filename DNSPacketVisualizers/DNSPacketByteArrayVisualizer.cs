@@ -1,13 +1,11 @@
-﻿using System;
-using System.IO;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using System.ComponentModel.Design;
 using Microsoft.VisualStudio.DebuggerVisualizers;
 using CodeMangler.DNSPacketVisualizers;
 
 [assembly: System.Diagnostics.DebuggerVisualizer(
     typeof(DNSPacketByteArrayVisualizer),
-    typeof(VisualizerObjectSource), Target = typeof(CodeMangler.DNSLookup.DNS.Message),
+    typeof(VisualizerObjectSource), Target = typeof(CodeMangler.nDNS.Message),
     Description = DNSPacketByteArrayVisualizer.Description)]
 
 namespace CodeMangler.DNSPacketVisualizers
@@ -25,8 +23,8 @@ namespace CodeMangler.DNSPacketVisualizers
             using (Form f = new Form())
             using (ByteViewer viewer = new ByteViewer())
             {
-                if (data is CodeMangler.DNSLookup.DNS.Message)
-                    viewer.SetBytes(((CodeMangler.DNSLookup.DNS.Message) data).RawBytes);
+                if (data is nDNS.Message)
+                    viewer.SetBytes(((nDNS.Message) data).RawBytes);
                 else return;
 
                 viewer.SetDisplayMode(DisplayMode.Hexdump);

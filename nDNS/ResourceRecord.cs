@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using CodeMangler.DNSLookup.DNS.Records;
+using CodeMangler.nDNS.Records;
 using System.Diagnostics;
 
-namespace CodeMangler.DNSLookup.DNS
+namespace CodeMangler.nDNS
 {
     [Serializable]
     public struct ResourceRecord

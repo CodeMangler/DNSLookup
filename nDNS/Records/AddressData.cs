@@ -1,4 +1,4 @@
-﻿namespace CodeMangler.DNSLookup.DNS.Records
+﻿namespace CodeMangler.nDNS.Records
 {
     public class AddressData : RecordData
     {

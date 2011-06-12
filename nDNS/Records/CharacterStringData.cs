@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using System;
-namespace CodeMangler.DNSLookup.DNS.Records
+namespace CodeMangler.nDNS.Records
 {
     class CharacterStringData : RecordData
     {
@@ -19,6 +19,18 @@ namespace CodeMangler.DNSLookup.DNS.Records
         {
             // Assumption: Every data block passed in contains exactly one character string.. The consumer of this class is expected to handle multiple character strings appropriately..
             byte characterStringLength = data[offset];
+            if (characterStringLength >= 192) // => compressed data, which I don't want to handle at the moment
+            {
+                _characterString = string.Empty;
+                return 1;
+            }
+            
+            if (characterStringLength + offset + 1 > data.Length) // TODO: Fix this. Temporary workaround..
+            {
+                _characterString = Encoding.ASCII.GetString(data, offset + 1, data.Length - offset - 1); // try to read off all remaining bytes..
+                return data.Length - offset;
+            }
+
             _characterString = Encoding.ASCII.GetString(data, offset + 1, characterStringLength);
             return characterStringLength + 1; // Additional 1 byte is the string length byte..
         }

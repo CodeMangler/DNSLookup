@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Text;
-namespace CodeMangler.DNSLookup.DNS.Records
+namespace CodeMangler.nDNS.Records
 {
     class NullData : RecordData
     {

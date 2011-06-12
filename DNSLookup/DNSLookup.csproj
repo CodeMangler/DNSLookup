@@ -55,29 +55,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="DNS\AdditionalInformationRecords.cs" />
-    <Compile Include="DNS\Records\AddressData.cs" />
-    <Compile Include="DNS\Answers.cs" />
-    <Compile Include="DNS\AuthorityResourceRecords.cs" />
-    <Compile Include="DNS\ExtensionMethods.cs" />
-    <Compile Include="DNS\HeaderFlags.cs" />
-    <Compile Include="DNS\Records\CharacterStringData.cs" />
-    <Compile Include="DNS\Records\DomainNameData.cs" />
-    <Compile Include="DNS\Records\HostInformationData.cs" />
-    <Compile Include="DNS\Records\IPv6AddressData.cs" />
-    <Compile Include="DNS\Records\MailExchangeData.cs" />
-    <Compile Include="DNS\Records\MailInformationData.cs" />
-    <Compile Include="DNS\Queries.cs" />
-    <Compile Include="DNS\Query.cs" />
-    <Compile Include="DNS\RecordClass.cs" />
-    <Compile Include="DNS\Records\NullData.cs" />
-    <Compile Include="DNS\Records\RecordData.cs" />
-    <Compile Include="DNS\Records\StartOfAuthorityData.cs" />
-    <Compile Include="DNS\Records\TextData.cs" />
-    <Compile Include="DNS\Records\WellKnownServiceData.cs" />
-    <Compile Include="DNS\Records\RecordDataFactory.cs" />
-    <Compile Include="DNS\ResourceRecord.cs" />
-    <Compile Include="LookupEngine.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -86,9 +63,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DNS\Header.cs" />
-    <Compile Include="DNS\Message.cs" />
-    <Compile Include="DNS\RecordType.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -118,6 +92,12 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\nDNS\nDNS.csproj">
+      <Project>{592B9426-935E-4432-A5BD-B1FDF91EBD42}</Project>
+      <Name>nDNS</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

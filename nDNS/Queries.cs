@@ -2,7 +2,7 @@
 using System.Text;
 using System;
 
-namespace CodeMangler.DNSLookup.DNS
+namespace CodeMangler.nDNS
 {
     [Serializable]
     public class Queries

@@ -1,6 +1,6 @@
-﻿using CodeMangler.DNSLookup.DNS.Records;
+﻿using CodeMangler.nDNS.Records;
 
-namespace CodeMangler.DNSLookup.DNS
+namespace CodeMangler.nDNS
 {
     class RecordDataFactory
     {

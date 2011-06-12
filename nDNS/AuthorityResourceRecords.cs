@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CodeMangler.DNSLookup.DNS
+namespace CodeMangler.nDNS
 {
     [Serializable]
-    class AdditionalInformationRecords
+    class AuthorityResourceRecords
     {
         private List<ResourceRecord> _resourceRecords = new List<ResourceRecord>();
 
-        internal int Parse(byte[] datagram, int offset, int additionalInformationRecordCount)
+        internal int Parse(byte[] datagram, int offset, int authorityResourceRecordCount)
         {
             int usedBytes;
-            _resourceRecords.AddRange(datagram.ParseResourceRecords(offset, additionalInformationRecordCount, out usedBytes));
+            _resourceRecords.AddRange(datagram.ParseResourceRecords(offset, authorityResourceRecordCount, out usedBytes));
             return usedBytes;
         }
 

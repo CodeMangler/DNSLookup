@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace DNSLookup.Tests
+namespace CodeMangler.nDNS.Tests
 {
     public class TestUtilities
     {

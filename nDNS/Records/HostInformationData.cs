@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-namespace CodeMangler.DNSLookup.DNS.Records
+namespace CodeMangler.nDNS.Records
 {
     class HostInformationData : RecordData
     {

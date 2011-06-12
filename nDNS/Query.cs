@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace CodeMangler.DNSLookup.DNS
+namespace CodeMangler.nDNS
 {
     [Serializable]
     public struct Query

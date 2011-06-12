@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using CodeMangler.nDNS;
 
-namespace CodeMangler.DNSLookup.DNS
+namespace CodeMangler.nDNS
 {
     // A DNS Message. i.e. the Packet that's exchanged between the server and the client as part of the protocol..
     [Serializable]
