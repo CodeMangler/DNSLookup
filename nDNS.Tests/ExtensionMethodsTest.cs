@@ -1,27 +1,19 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
+using NUnit.Framework;
 
 namespace CodeMangler.nDNS.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class ExtensionMethodsTest
     {
-        private TestContext testContextInstance;
-
-        public TestContext TestContext
-        {
-            get { return testContextInstance; }
-            set { testContextInstance = value; }
-        }
-
-        [TestMethod]
+        [Test]
         public void EnsureByteArrayIsCorrectlyConvertedToUInt16()
         {
             byte[] twoBytes = new byte[] { 0x0F, 0xF0 };
             Assert.AreEqual(4080, twoBytes.ToUInt16(0));
         }
 
-        [TestMethod]
+        [Test]
         public void EnsureUInt16ConversionWorksOnMultibyteArrayAccountingForOffset()
         {
             byte[] manyBytes = new byte[] { 0x0F, 0xF0, 0xFF, 0xFF, 0x1A, 0x1B };
@@ -31,7 +23,7 @@ namespace CodeMangler.nDNS.Tests
             Assert.AreEqual(6683, manyBytes.ToUInt16(4)); // 0x1A1B
         }
 
-        [TestMethod]
+        [Test]
         public void CanConvertUInt16ToByteArray()
         {
             TestUtilities.AssertByteArrayContents(new byte[] { 0x0F, 0xF0 }, ((UInt16) 4080).ToByteArray());
@@ -40,7 +32,7 @@ namespace CodeMangler.nDNS.Tests
             TestUtilities.AssertByteArrayContents(new byte[] { 0x1A, 0x1B }, ((UInt16) 6683).ToByteArray());
         }
 
-        [TestMethod]
+        [Test]
         public void CanDecodeDomainName()
         {
             byte[] datagram = new byte[] { 0x03, 119, 119, 119, 0x06, 103, 111, 111, 103, 108, 101, 0x03, 99, 111, 109, 0x00 }; // Reads: 3www6google3com0 [with numbers being actual bytes, not ASCII]
@@ -49,7 +41,7 @@ namespace CodeMangler.nDNS.Tests
             Assert.AreEqual(16, usedBytes);
         }
 
-        [TestMethod]
+        [Test]
         public void CanDecodeCompressedDomainName()
         {
             byte[] datagram = new byte[] {  0xCA, 0xFE, 0xBA, 0xBE, // Some totally random bytes
@@ -73,7 +65,7 @@ namespace CodeMangler.nDNS.Tests
             Assert.AreEqual(2, usedBytes);
         }
 
-        [TestMethod]
+        [Test]
         public void CanEncodeDomainName()
         {
             byte[] expected = new byte[] { 0x03, 119, 119, 119, 0x06, 103, 111, 111, 103, 108, 101, 0x03, 99, 111, 109, 0x00 };

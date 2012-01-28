@@ -7,3 +7,4 @@ obj
 Debug
 Release
 TestResults/*
+*.pidb

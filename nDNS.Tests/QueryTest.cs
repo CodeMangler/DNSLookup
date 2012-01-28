@@ -1,18 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 
 namespace CodeMangler.nDNS.Tests
 {
-    [TestClass()]
+    [TestFixture]
     public class QueryTest
     {
-        private TestContext testContextInstance;
-        public TestContext TestContext
-        {
-            get { return testContextInstance; }
-            set { testContextInstance = value; }
-        }
-
-        [TestMethod]
+        [Test]
         public void CanDecodeOneQuery()
         {
             byte[] datagram = new byte[] {0x0F, 0x00, 
@@ -26,7 +19,7 @@ namespace CodeMangler.nDNS.Tests
             Assert.AreEqual(20, usedBytes);
         }
 
-        [TestMethod]
+        [Test]
         public void CanDecodeMultipleQueries()
         {
             byte[] datagram = new byte[] {0x0F, 0x00, 
@@ -51,7 +44,7 @@ namespace CodeMangler.nDNS.Tests
             Assert.AreEqual(19, usedBytes);
         }
 
-        [TestMethod]
+        [Test]
         public void CanEncodeQuery()
         {
             byte[] expected = new byte[] { 0x03, 119, 119, 119, 0x06, 103, 111, 111, 103, 108, 101, 0x03, 99, 111, 109, 0x00,

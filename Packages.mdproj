@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ItemType>PackagingProject</ItemType>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7E271BF0-6DC8-460C-9E7B-6B941D096803}</ProjectGuid>
+    <Packages>
+      <Packages>
+        <Package name="Linux Binaries">
+          <Builder targetFile="DNSLookup.tar.gz" platform="Linux" configuration="Release" ctype="BinariesZipPackageBuilder">
+            <ChildEntries>
+              <SolutionItemReference path="nDNS\nDNS.csproj" />
+              <SolutionItemReference path="nDNS.Tests\nDNS.Tests.csproj" />
+              <SolutionItemReference path="DNSLookup.UI.GTK\DNSLookup.UI.GTK.csproj" />
+            </ChildEntries>
+            <RootEntry path="DNSLookup.sln" id=":root:" />
+          </Builder>
+        </Package>
+        <Package name="Windows Binaries">
+          <Builder targetFile="DNSLookup.tar.gz" platform="Windows" configuration="Release" ctype="BinariesZipPackageBuilder">
+            <ChildEntries>
+              <SolutionItemReference path="nDNS\nDNS.csproj" />
+              <SolutionItemReference path="nDNS.Tests\nDNS.Tests.csproj" />
+              <SolutionItemReference path="DNSLookup.UI.GTK\DNSLookup.UI.GTK.csproj" />
+            </ChildEntries>
+            <RootEntry path="DNSLookup.sln" id=":root:" />
+          </Builder>
+        </Package>
+      </Packages>
+    </Packages>
+  </PropertyGroup>
+</Project>

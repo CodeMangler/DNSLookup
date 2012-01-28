@@ -1,19 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 
 namespace CodeMangler.nDNS.Tests
 {
-    [TestClass()]
+    [TestFixture]
     public class DNSHeaderTest
     {
-        private TestContext testContextInstance;
-
-        public TestContext TestContext
-        {
-            get { return testContextInstance; }
-            set { testContextInstance = value; }
-        }
-
-        [TestMethod()]
+        [Test]
         public void EnsureDatagramCorrectParsingOfTheDatagram()
         {
             byte[] datagram = new byte[] { 
