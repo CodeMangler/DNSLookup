@@ -19,13 +19,13 @@ namespace CodeMangler.DNSLookup
             _serverEndpoint = new IPEndPoint(IPAddress.Parse(_server), DNS_PORT);
         }
 
-        public string Lookup(string query, string queryType)
+        public string Lookup(string query, string queryType, HeaderFlags queryOptions = HeaderFlags.RecursionDesired)
         {
             UdpClient udpChannel = null;
             try
             {
                 udpChannel = new UdpClient(LOCAL_PORT);
-                Message dnsRequest = new Message();
+                Message dnsRequest = new Message(queryOptions);
                 dnsRequest.AddQuery(query, (RecordType) Enum.Parse(typeof (RecordType), queryType, true));
                 byte[] requestDatagram = dnsRequest.AsByteArray();
                 int sendResult = udpChannel.Send(requestDatagram, requestDatagram.Length, _serverEndpoint);

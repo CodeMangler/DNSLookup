@@ -18,9 +18,9 @@ namespace CodeMangler.nDNS
         // Only for debugging..
         private byte[] _rawBytes = new byte[0];
 
-        public Message()
+        public Message(HeaderFlags flags = (HeaderFlags) 0)
         {
-            _header = new Header();
+            _header = new Header(flags);
             _queries = new Queries();
             _answers = new Answers();
             _authorityResourceRecords = new AuthorityResourceRecords();

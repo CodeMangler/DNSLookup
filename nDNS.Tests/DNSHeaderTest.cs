@@ -19,7 +19,7 @@ namespace CodeMangler.nDNS.Tests
             Header header = new Header();
             header.Parse(datagram);
             Assert.AreEqual(258, header.Id);
-            Assert.AreEqual(65535, header.Flags);
+            Assert.AreEqual(65535, (ushort) header.Flags);
             Assert.AreEqual(1, header.QueryCount);
             Assert.AreEqual(10, header.AnswerCount);
             Assert.AreEqual(2, header.AuthorityResourceRecordCount);

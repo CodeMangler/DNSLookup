@@ -11,15 +11,25 @@ namespace CodeMangler.nDNS
         private const int HEADER_SIZE = 12; // bytes
 
         UInt16 _id;
-        UInt16 _flags;
+        HeaderFlags _flags;
         UInt16 _queryCount;
         UInt16 _answerCount;
         UInt16 _authorityResourceRecordCount;
         UInt16 _additionalResourceRecordCount;
 
+        public Header(HeaderFlags flags = (HeaderFlags) 0)
+        {
+            this._flags = flags;
+            _id = 0;
+            _queryCount = 0;
+            _answerCount = 0;
+            _authorityResourceRecordCount = 0;
+            _additionalResourceRecordCount = 0;
+        }
+
         public int Id { get { return _id; } }
 
-        public int Flags { get { return _flags; } } // Remove this and change the way flags are handled..
+        public HeaderFlags Flags { get { return _flags; } }
 
         public int QueryCount 
         { 
@@ -36,7 +46,7 @@ namespace CodeMangler.nDNS
         public int Parse(byte[] datagram)
         {
             _id = datagram.ToUInt16(0);
-            _flags = datagram.ToUInt16(2);
+            _flags = (HeaderFlags) datagram.ToUInt16(2);
             _queryCount = datagram.ToUInt16(4);
             _answerCount = datagram.ToUInt16(6);
             _authorityResourceRecordCount = datagram.ToUInt16(8);

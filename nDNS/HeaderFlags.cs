@@ -1,4 +1,6 @@
-﻿namespace CodeMangler.nDNS
+﻿using System;
+
+namespace CodeMangler.nDNS
 {
     /*
   0  1  2  3  4  5  6  7  8  9  0  1  2  3  4  5
@@ -6,6 +8,8 @@
 |QR|   Opcode  |AA|TC|RD|RA|   Z    |   RCODE   |
 +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
      */
+
+    [Flags]
     public enum HeaderFlags
     {
         Response = 0x8000, // QR -> Turning this bit off => it's a query
