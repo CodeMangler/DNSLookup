@@ -14,7 +14,7 @@
             <RowDefinition Height="30" MinHeight="30" />
             <RowDefinition Height="300*" MinHeight="300" />
         </Grid.RowDefinitions>
-        <Button Name="btnQuery" Content="Lookup" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2" Click="btnQuery_Click" />
+        <Button Name="btnQuery" Content="Lookup" Grid.Column="3" Grid.RowSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2" Click="btnQuery_Click" />
         <ComboBox Name="cmbQueryType" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2">
             <ComboBoxItem Content="ANY" Selector.IsSelected="True" />
             <ComboBoxItem Content="A" />
@@ -29,7 +29,7 @@
             <ComboBoxItem Content="A+AAAA" />
         </ComboBox>
         <TextBox Name="txtQuery" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2" Grid.ColumnSpan="2" Text="google.com" />
-        <TextBox Name="txtServer" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2" LostFocus="txtServer_LostFocus" />
+        <TextBox Name="txtServer" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2" LostFocus="txtServer_LostFocus" />
         <TextBox Name="txtResults" Grid.Row="2" HorizontalAlignment="Stretch" Margin="2" VerticalAlignment="Stretch" Grid.ColumnSpan="4" />
         <Label Name="lblServer" Content="Server" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
     </Grid>
