@@ -1,0 +1,24 @@
+name: .NET CI
+
+on:
+  push:
+    branches: [ "**" ]
+  pull_request:
+    branches: [ "**" ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.1
+
+    - name: Build solution
+      run: msbuild DNSLookup.sln /p:Configuration=Release
+
+    - name: Run tests
+      run: Tools/NUnit/nunit.exe nDNS.Tests/bin/Release/CodeMangler.nDNS.Tests.dll
